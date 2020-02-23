@@ -16,6 +16,7 @@ The project is further extensible if we need to add **event** later on into the 
 
 Following is the payload that is sent to the backend store:-
 
+```
 [
   {
     id: 1,
@@ -91,3 +92,4 @@ Following is the payload that is sent to the backend store:-
     ]
   }
 ]
+```
