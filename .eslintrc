@@ -1,0 +1,142 @@
+{
+  "parserOptions": {
+      "ecmaVersion": 2019,
+      "sourceType": "module"
+  },
+'parser': 'babel-eslint',
+'env': {
+  'es6': true,
+  "browser": true,
+  "node": true,
+  "jest": true
+
+},
+'globals': {
+  "expect": false
+},
+'extends': ['eslint:recommended'],
+'rules': {
+  # require const declarations for variables that are never reassigned after declared
+  'prefer-const': 'error',
+
+  # require let or const instead of var
+  'no-var': 1,
+
+  # disallow Object constructors
+  'no-new-object': 'error',
+
+  # require or disallow method and property shorthand syntax for object literals
+  'object-shorthand': 'error',
+
+  # require quotes around object literal property names
+  'quote-props': ['error','as-needed'],
+
+  # disallow Array constructors
+  'no-array-constructor': 'error',
+
+  # enforce the consistent use of either backticks, double, or single quotes
+  'quotes': 'warn',
+
+  # require template literals instead of string concatenation
+  'prefer-template': 'error',
+
+  # Enforce Usage of Spacing in Template Strings
+  'template-curly-spacing': ['error','never'],
+
+  # 	disallow new operators with the Function object
+  'no-new-func': 'error',
+
+  # Require or disallow a space before function parenthesis
+  'space-before-function-paren':  ['error', {
+      'anonymous': 'always',
+      'named': 'always',
+      'asyncArrow': 'ignore'
+  }],
+
+  # enforce consistent spacing before blocks
+  'space-before-blocks': ['error','always'],
+
+  # enforce consistent spacing before and after the arrow in arrow functions
+  'arrow-spacing': ['error',{
+    'before': true,
+    'after': true
+  }],
+
+  # Disallow arrow functions where they could be confused with comparisons
+  'no-confusing-arrow': ["error", {"allowParens": false}],
+
+  # require or disallow trailing commas
+  'comma-dangle': 'error', #TODO: Get the logic once
+
+  # Require Brace Style
+  'brace-style':['error','1tbs'],
+
+  # Requires or disallows a whitespace (space or tab) beginning a comment
+  'spaced-comment':['error','always'],
+
+  # enforce consistent indentation
+  'indent': ['error', 2,{"SwitchCase":1}],
+
+  # enforce consistent spacing before and after keywords
+  'keyword-spacing': ['error',{
+    'before': true,
+    'after': true
+  }],
+
+  # require or disallow newline at the end of files
+  'eol-last': ['error','always'],
+
+  # require a newline after each call in a method chain
+  'newline-per-chained-call': ['error'],
+
+  # disallow whitespace before properties
+  'no-whitespace-before-property': ['error'],
+
+  # require or disallow padding within blocks
+  'padded-blocks': ['error','never'],
+
+
+
+  # Disallow or enforce spaces inside of parentheses
+  "space-in-parens": ["error", "never"],
+
+  # Disallow or enforce spaces inside of brackets
+  'array-bracket-spacing': ["error", "never"],
+
+  # Disallow or enforce spaces inside of brackets
+  'object-curly-spacing': ["error", "never"],
+
+  # Comma Style
+  'comma-style': ["error", "last"],
+
+  # Semi Colon
+  'semi': ['error','always'],
+
+  # Camelcase
+  'camelcase': ['error',{
+    'properties':'always'
+  }],
+
+  # Console
+  'no-console': 0,
+
+  'no-case-declarations': 0,
+
+  'react/no-string-refs': 0,
+
+
+# Allowing classes to be renamed for redux forms
+  'no-class-assign': 0,
+  # Imports should be first
+  #'import/first': ['error'],
+
+  'key-spacing': ["error", {
+    "afterColon": true,
+    "beforeColon": false
+  }],
+
+  "comma-spacing": ["error", { "before": false, "after": true }],
+
+  "space-infix-ops": "error"
+}
+}
