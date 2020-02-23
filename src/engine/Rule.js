@@ -5,15 +5,22 @@ class Rule {
     if (!rule.conditions) {
       console.warn("Please pass conditions for the rule");
     }
+
     if (!rule.id) {
       console.warn("Please pass id for the rule");
     }
+
+    if (!rule.name) {
+      console.warn("Please pass rule name");
+    }
+
     this.conditions = [];
-    this.name = rule.name || "";
+    this.name = rule.name;
     this.id = rule.id;
 
-    // TODO: Check if type if array
-    rule.conditions && rule.conditions.map(condition => this.addCondition(condition));
+    rule.conditions
+      && rule.conditions.length
+      && rule.conditions.map(condition => this.addCondition(condition));
   }
 
   addCondition (condition = {}) {

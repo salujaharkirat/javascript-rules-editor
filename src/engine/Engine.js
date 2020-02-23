@@ -3,22 +3,16 @@ import Rule from "./Rule";
 class Engine {
   constructor (rules = []) {
     this.rules = [];
-
     rules.map((rule) => this.addRule(rule));
   }
 
-  addRule (rule) {
-    if (!rule) {
-      console.warn("Please pass a rule");
-      return null;
-    }
-
+  addRule (rule = {}) {
     const ruleObject = new Rule(rule);
     this.rules.push(ruleObject);
     return this.rules;
   }
 
-  updateRule (rule) {
+  updateRule (rule = {}) {
     if (!rule) {
       console.warn("Please pass a rule");
       return null;
@@ -33,9 +27,11 @@ class Engine {
       }
       return datum;
     });
+
+    return this.rules;
   }
 
-  deleteRule (rule) {
+  deleteRule (rule = {}) {
     if (!rule) {
       console.warn("Please pass a rule");
       return null;
