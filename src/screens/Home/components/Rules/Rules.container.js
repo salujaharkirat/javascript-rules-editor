@@ -1,145 +1,67 @@
 import React from "react";
+import {connect} from "react-redux";
+import PropTypes from "prop-types";
+
+import {
+  updateRules,
+  addRule
+} from "data/rules/actions";
 
 import Rules from "./Rules";
 
-import RuleModel from "models/Rule";
+import RULES from "./__mocks__";
+
+const propTypes = {
+  addRule: PropTypes.func.isRequired,
+  rules: PropTypes.array.isRequired,
+  updateRules: PropTypes.func.isRequired
+}
 
 
 class RulesContainer extends React.Component {
   state = {
-    rules: []
+    loading: true
   }
 
   componentDidMount () {
-    // TODO: Make the api call and update the rules in state
-    const rules =[
-      {
-        id: 1,
-        name: "First Rule",
-        conditions: [
-          {
-            id: 1,
-            name: "First Condition",
-            fact: "monthly rental amount",
-            operator: "greaterThan",
-            value: 1000
-          },
-          {
-            id: 2,
-            name: "Second Condition",
-            fact: "Customer Age",
-            operator: "lessThan",
-            value: 21
-          }
-        ]
-      },
-      {
-        id: 2,
-        name: "Second Rule",
-        conditions: [
-          {
-            id: 1,
-            name: "First Condition",
-            fact: "monthly rental amount",
-            operator: "greaterThan",
-            value: 1000
-          },
-          {
-            id: 2,
-            name: "Second Condition",
-            fact: "Zip Code",
-            operator: "isIn",
-            value: [3,5,6]
-          }
-        ]
-      },
-      {
-        id: 3,
-        name: "Third Rule",
-        conditions: [
-          {
-            id: 1,
-            name: "First Condition",
-            fact: "monthly rental amount",
-            operator: "lessThanInclusive",
-            value: 1000
-          },
-          {
-            id: 2,
-            name: "Second Condition",
-            fact: "Order",
-            operator: "hasA",
-            value: "TV"
-          }
-        ]
-      },
-      {
-        id: 4,
-        name: "Fourth Rule",
-        conditions: [
-          {
-            id: 1,
-            name: "First Condition",
-            fact: "Rental Tenure",
-            operator: "lessThan",
-            value: 3
-          }
-        ]
-      }
-    ]
-    this.setState({rules});
-  }
-
-  addRule = (rule = {}) => {
-    // const ruleModel = new RuleModel(rule);
-    const ruleModel = {
-      id: 5,
-      conditions: []
-    }
-
+    // TODO: Call API and update
+    this.props.updateRules(RULES);
     this.setState({
-      rules: [
-        ...this.state.rules,
-        ruleModel
-      ]
-    })
-  }
-
-  updateRule = (rule = {}) => {
-    const rules = this.state.rules.map((datum) => {
-      if (datum.id === rule.id) {
-        return {
-          ...datum,
-          ...rule
-        };
-      }
-      return datum;
+      loading: false
     });
 
-    this.setState({
-      rules
-    })
-  }
-
-  deleteRule = (rule = {}) => {
-    const rules = this.state.rules.filter(datum => datum.id !== rule.id);
-    this.setState({rules});
-  }
-
-  save = () => {
-    // Call Save API
   }
 
   render () {
+    if (this.state.loading) {
+      return null;
+    }
+
     return (
       <Rules
-        rules={this.state.rules}
-        addRule={this.addRule}
-        deleteRule={this.deleteRule}
-        updateRule={this.updateRule}
+        addRule={this.props.addRule}
+        rules={this.props.rules}
       />
     );
   }
 }
 
-export default RulesContainer;
+
+const mapStateToProps = (store) => ({
+  rules: store.rules
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  updateRules: (rules) => {
+    dispatch(updateRules(rules))
+  },
+  addRule: () => {
+    dispatch(addRule())
+  }
+});
+
+const withStore = connect(mapStateToProps, mapDispatchToProps);
+
+RulesContainer.propTypes = propTypes;
+
+export default withStore(RulesContainer);

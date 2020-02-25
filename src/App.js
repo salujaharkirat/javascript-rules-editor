@@ -1,10 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
+import {Provider} from 'react-redux'
 
+import store from "./configureStore";
 import Home from "screens/Home";
 
+
+
 function App() {
-  return <Home />
+  return (
+    <Provider store={store}>
+      <Home />
+    </Provider>
+  )
 }
 
 export default App;

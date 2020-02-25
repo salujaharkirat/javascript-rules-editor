@@ -19,16 +19,19 @@ const Condition = ({
       name="fact"
       onChange={updateCondition}
       value={condition.fact}
+      style={{margin: '0 10px 10px 0'}}
     />
     <input
       name="operator"
       onChange={updateCondition}
       value={condition.operator}
+      style={{margin: '0 10px 10px 0'}}
     />
     <input
       name="value"
       onChange={updateCondition}
       value={condition.value}
+      style={{margin: '0 10px 10px 0'}}
     />
     <button onClick={deleteCondition}>Delete Condition</button>
   </div>
