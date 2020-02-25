@@ -6,16 +6,12 @@ import Rule from "./components/Rule";
 
 const propTypes = {
   addRule: PropTypes.func.isRequired,
-  deleteRule: PropTypes.func.isRequired,
-  rules: PropTypes.array.isRequired,
-  updateRule: PropTypes.func.isRequired
+  rules: PropTypes.array.isRequired
 };
 
 const Rules = ({
   rules,
   addRule,
-  updateRule,
-  deleteRule
 }) => {
   const content = [];
   for (const rule of rules) {
@@ -23,8 +19,6 @@ const Rules = ({
       <Rule
         key={rule.id}
         rule={rule}
-        updateRule={updateRule}
-        deleteRule={deleteRule}
       />
     );
   }

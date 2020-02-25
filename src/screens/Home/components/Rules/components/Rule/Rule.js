@@ -5,30 +5,34 @@ import Condition from "./components/Condition";
 
 
 const propTypes = {
-  deleteCondition: PropTypes.func.isRequired,
+  // deleteCondition: PropTypes.func.isRequired,
+  deleteRule: PropTypes.func.isRequired,
   rule: PropTypes.object.isRequired,
-  updateCondition: PropTypes.func.isRequired
+  addCondition: PropTypes.func.isRequired
 };
 
 const Rule = ({
   rule,
-  deleteCondition,
-  updateCondition
+  deleteRule,
+  addCondition
 }) => {
   const content = [];
   for (const condition of rule.conditions) {
     content.push(
       <Condition
         key={condition.id}
-        deleteCondition={deleteCondition}
         condition={condition}
-        updateCondition={updateCondition}
+        ruleId={rule.id}
       />
     );
   }
   return (
-    <div>
+    <div style={{border: '1px solid', marginTop: '30px', width: '50%', padding: '30px'}}>
       {content}
+      <button onClick={() => deleteRule(rule.id)}>
+        Delete rule
+      </button>
+      <button onClick={addCondition}> Add condition</button>
     </div>
   )
 }

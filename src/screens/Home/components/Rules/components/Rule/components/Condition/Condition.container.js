@@ -1,36 +1,58 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
+
+import {
+  updateCondition,
+  deleteCondition
+} from "data/rules/actions";
 
 import Condition from "./Condition";
 
 
 const propTypes = {
   condition: PropTypes.object.isRequired,
+  ruleId: PropTypes.number.isRequired,
   deleteCondition: PropTypes.func.isRequired,
   updateCondition: PropTypes.func.isRequired
 }
 
-class ConditionContainer extends React.Component {
-
-  updateCondition = (event) => {
-    const condition = {
-      ...this.props.condition,
-      [event.target.name]: event.target.value
-    }
-    this.props.updateCondition(condition);
+const ConditionContainer = ({
+  condition,
+  ruleId,
+  updateCondition,
+  deleteCondition
+}) => {
+  const update = (event) => {
+    updateCondition(ruleId, condition.id, event.target.name, event.target.value);
   }
 
-  render () {
-    return (
-      <Condition
-        condition={this.props.condition}
-        updateCondition={this.updateCondition}
-        deleteCondition={this.props.deleteCondition}
-      />
-    );
+  const del = () => {
+    deleteCondition(ruleId, condition.id);
   }
+
+  return (
+    <Condition
+      condition={condition}
+      updateCondition={update}
+      deleteCondition={del}
+      ruleId={ruleId}
+    />
+  );
 }
+
+
+const mapDispatchToProps = (dispatch) => ({
+  updateCondition: (ruleId, conditionId, key, value) => {
+    dispatch(updateCondition(ruleId, conditionId, key, value))
+  },
+  deleteCondition: (ruleId, conditionId) => {
+    dispatch(deleteCondition(ruleId, conditionId))
+  }
+});
+
+const withStore = connect(null, mapDispatchToProps);
 
 ConditionContainer.propTypes = propTypes;
 
-export default ConditionContainer;
+export default withStore(ConditionContainer);
