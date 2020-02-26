@@ -28,3 +28,27 @@
   display: flex;
   align-items: center;
 }
+
+
+.rules-container .save-rules-container {
+  background: var(--color-panache);
+  margin-left: 2em;
+  border: 1px solid var(--color-deyork);
+  margin-top: 1.5em;
+  display: flex;
+  align-items: center;
+  border-radius: 2em 0.8em 0.8em 2em;
+  display: inline-block;
+  margin-top: 3em;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.rules-container .save-image {
+  background: var(--color-deyork);
+}
+
+.rules-container .save-rules-text {
+  padding: 0em 1em 0em 1em;
+  color: var(--color-deyork)
+}

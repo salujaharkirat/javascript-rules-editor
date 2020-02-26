@@ -2,6 +2,8 @@ import React from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 
+import axios from "axios";
+
 import {
   updateRules,
   addRule
@@ -9,13 +11,14 @@ import {
 
 import Rules from "./Rules";
 
-import RULES from "./__mocks__";
 
 const propTypes = {
   addRule: PropTypes.func.isRequired,
   rules: PropTypes.array.isRequired,
   updateRules: PropTypes.func.isRequired
 }
+
+const RULES_API_ENDPOINT = 'http://localhost:3000/api/v0/rules';
 
 
 class RulesContainer extends React.Component {
@@ -24,12 +27,30 @@ class RulesContainer extends React.Component {
   }
 
   componentDidMount () {
-    // TODO: Call API and update
-    this.props.updateRules(RULES);
-    this.setState({
-      loading: false
-    });
+    axios.get(RULES_API_ENDPOINT)
+      .then(({data}) => {
+        this.props.updateRules(data.data);
+        this.setState({
+          loading: false
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      })
 
+  }
+
+  onSave = () => {
+    const payload = {
+      rules: this.props.rules
+    };
+    axios.post(`${RULES_API_ENDPOINT}/add-rules`, payload)
+      .then(({data}) => {
+        alert("Successfully saved");
+      })
+      .catch((error) => {
+        alert("Failed");
+      })
   }
 
   render () {
@@ -41,6 +62,7 @@ class RulesContainer extends React.Component {
       <Rules
         addRule={this.props.addRule}
         rules={this.props.rules}
+        onSave={this.onSave}
       />
     );
   }
@@ -53,6 +75,7 @@ const mapStateToProps = (store) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   updateRules: (rules) => {
+    console.log("Rules", rules);
     dispatch(updateRules(rules))
   },
   addRule: () => {

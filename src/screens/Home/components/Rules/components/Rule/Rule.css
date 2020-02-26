@@ -4,6 +4,7 @@
     padding: 2em;
     background: var(--color-hawkesBlue);
     border-radius: 1.5em 1em;
+    width: 70%;
 }
 
 .rule-container .header {
@@ -12,9 +13,6 @@
 }
 
 .rule-container .delete-icon-container {
-  /* position: absolute;
-  right: 10px;
-  top: 10px; */
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -26,9 +24,6 @@
 }
 
 .rule-container .rule-icon-container {
-  /* position: absolute; */
-  /* left: -2px; */
-  /* top: -2px; */
   display: flex;
   align-items: center;
 }
@@ -40,7 +35,6 @@
 
 .rule-container .highlighted-text {
   color: var(--color-cornflowerBlue);
-  /* text-decoration: underline; */
   font-size: 1em;
   font-weight: 900;
 }

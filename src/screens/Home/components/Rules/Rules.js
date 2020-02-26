@@ -13,12 +13,14 @@ require("./Rules.css");
 
 const propTypes = {
   addRule: PropTypes.func.isRequired,
-  rules: PropTypes.array.isRequired
+  rules: PropTypes.array.isRequired,
+  onSave: PropTypes.func.isRequired
 };
 
 const Rules = ({
   rules,
   addRule,
+  onSave
 }) => {
   const content = [];
   for (const rule of rules) {
@@ -50,7 +52,26 @@ const Rules = ({
           </div>
         </div>
       </div>
+      <div
+        onClick={onSave}
+        className='save-rules-container'
+      >
+        <div className='add'>
+          <RoundedIcon className='save-image'>
+            <img
+              src={add}
+              alt="Save Rules"
+            />
+          </RoundedIcon>
+          <div>
+            <Text className='save-rules-text'>
+              Save Rules
+            </Text>
+          </div>
+        </div>
+      </div>
       {content}
+      <button onClick={onSave}>Save</button>
     </div>
   );
 }
