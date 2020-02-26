@@ -1,0 +1,27 @@
+.select-container .selected-option {
+  display: flex;
+  align-items: center;
+  border-Bottom: 2px solid var(--color-carnation);
+}
+
+.select-container .option-container {
+  position: absolute;
+  z-index: 300;
+  top: 2em;
+  background: var(--color-carnation);
+}
+
+.select-container .option {
+  padding: 0.9em 0.4em 0.9em 0.4em;
+  border-bottom: 1px solid var(--color-pipin);
+  font-size: 0.9em;
+  color: var(--color-pipin);
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .select-container .selected-option {
+    width: 9em;
+  }
+}
+

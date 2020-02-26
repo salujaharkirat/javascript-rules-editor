@@ -3,13 +3,18 @@ import PropTypes from "prop-types";
 
 import Condition from "./components/Condition";
 
+import RoundedIcon from "components/RoundedIcon";
+
 import doc from "./images/doc.svg";
 import add from "./images/add.svg";
 import deleteIcon from "./images/delete.svg";
 
+import Text from "components/Text";
+
+require("./Rule.css");
+
 
 const propTypes = {
-  // deleteCondition: PropTypes.func.isRequired,
   deleteRule: PropTypes.func.isRequired,
   rule: PropTypes.object.isRequired,
   addCondition: PropTypes.func.isRequired
@@ -20,140 +25,77 @@ const Rule = ({
   deleteRule,
   addCondition
 }) => {
-  const content = [];
-  for (const condition of rule.conditions) {
-    content.push(
+  const content = rule.conditions.map((condition, index) =>
+    (rule.conditions.length -1 === index)
+    ? (
       <Condition
         key={condition.id}
         condition={condition}
         ruleId={rule.id}
       />
-    );
-  }
-  return (
-    <div
-      style={{
-        border: '2px solid #6686F7',
-        marginTop: '30px',
-        width: '50%',
-        padding: '30px',
-        background: "#E6EBFE",
-        borderRadius: '1.5em 1em',
-        position: 'relative'
-      }}
-    >
-      <div
-        style={{
-          position: 'absolute',
-          right: 10,
-          top: 10,
-          display: 'flex',
-          alignItems: 'center'
-        }}
-      >
-        <img
-          src={deleteIcon}
-          onClick={() => deleteRule(rule.id)}
-          alt="Delete Rule"
+    ) : (
+      <div key={condition.id}>
+        <Condition
+          condition={condition}
+          ruleId={rule.id}
         />
+        <div className="separator">
+          <Text className="separator-text">and</Text>
+        </div>
       </div>
-      <div
-        style={{
-          position: 'absolute',
-          left: -2,
-          top: -2,
-          display: 'flex',
-          alignItems: 'center'
-        }}
-      >
-        <div
-          style={{
-            padding: 10,
-            background: '#6686F7',
-            borderRadius: '2em',
-            marginRight: '0.8em'
-          }}
-        >
+    )
+  )
+  return (
+    <div className='rule-container'>
+      <div className="header">
+        <div className="rule-icon-container">
+          <RoundedIcon className='doc-icon'>
+            <img
+              src={doc}
+              className="App-logo"
+              alt="logo"
+            />
+          </RoundedIcon>
+          <Text className='description'>
+            When
+            &nbsp;
+              <Text className="highlighted-text">
+                All
+              </Text>
+              &nbsp;
+            of the conditions meet
+          </Text>
+        </div>
+        <div className='delete-icon-container'>
           <img
-            src={doc}
-            className="App-logo"
-            alt="logo"
+            src={deleteIcon}
+            onClick={() => deleteRule(rule.id)}
+            alt="Delete Rule"
           />
         </div>
-        <span
-          style={{
-            fontFamily: 'nunito',
-            color: "#4a4a4a",
-            fontSize: "0.85em"
-          }}
-        >
-          When
-          &nbsp;
-            <b
-              style={{
-                color: "#6686F7",
-                textDecoration: "underline",
-                fontSize: "1em"
-              }}
-            >
-              All
-            </b>
-            &nbsp;
-          of the conditions meet
-        </span>
       </div>
-      <div style={{marginTop: 30}}>
+      <div className='content'>
         {content}
       </div>
       <div
-        style={{
-          display: 'inline-block'
-        }}
+        onClick={addCondition}
+        className='add-condition-container'
       >
-        <div
-          style={{
-            background: "#FFE7E5",
-            border: '1px solid #F77566',
-            marginTop: 20,
-            display: "flex",
-            alignItems: "center",
-            borderRadius: '2em 0.8em 0.8em 2em'
-          }}
-        >
-          <div
-            style={{
-              background: "#F77566",
-              display: 'inline-block',
-              padding: '0.4em',
-              borderRadius: '2em'
-            }}
-          >
+        <div className='add-condition'>
+          <RoundedIcon className='add-icon'>
             <img
               src={add}
-              onClick={addCondition}
+
               alt="Add Condition"
             />
-          </div>
-          <div
-            style={{
-              padding: '0em 1em 0em 1em'
-
-            }}
-          >
-            <span
-              style={{
-                fontFamily: 'nunito',
-                fontSize: '0.9em',
-                fontWeight: '700',
-                color: "#F77566"
-              }}
-            >
+          </RoundedIcon>
+          <div className='add-condition-text'>
+            <Text>
               Add Condition
-            </span>
+            </Text>
           </div>
         </div>
       </div>
-
     </div>
   )
 }

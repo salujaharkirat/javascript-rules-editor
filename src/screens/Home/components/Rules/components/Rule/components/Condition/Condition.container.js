@@ -28,7 +28,12 @@ const ConditionContainer = ({
   }
 
   const del = () => {
-    deleteCondition(ruleId, condition.id);
+    const r = window.confirm ("Are you sure you want to delete the condition?");
+    if (r) {
+      deleteCondition(ruleId, condition.id);
+      return null;
+    }
+    return null;
   }
 
   return (

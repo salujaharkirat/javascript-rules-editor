@@ -8,11 +8,11 @@ const rules = (state = [], action) => {
     }
     case "ADD_RULE": {
       return [
-        ...state,
         {
           id: state.length + 1,
           conditions: []
-        }
+        },
+        ...state
       ]
     }
     case "DELETE_RULE": {
