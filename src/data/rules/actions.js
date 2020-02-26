@@ -1,5 +1,3 @@
-// const UPDATE = "payment/amount/UPDATE";
-
 const updateRules = (rules) => {
   return {
     type: "UPDATE_RULES",
