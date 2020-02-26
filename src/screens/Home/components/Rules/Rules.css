@@ -1,0 +1,30 @@
+.rules-container .add-image {
+  background: var(--color-cornflowerBlue);
+}
+
+.rules-container .add-description {
+  color: var(--color-cornflowerBlue);
+}
+
+.rules-container .add-rules-container {
+  background: var(--color-hawkesBlue);
+  border: 1px solid var(--color-cornflowerBlue);
+  margin-top: 1.5em;
+  display: flex;
+  align-items: center;
+  border-radius: 2em 0.8em 0.8em 2em;
+  display: inline-block;
+  margin-top: 3em;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.rules-container .add-rules-text {
+  padding: 0em 1em 0em 1em;
+  color: var(--color-cornflowerBlue)
+}
+
+.rules-container .add {
+  display: flex;
+  align-items: center;
+}

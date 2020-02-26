@@ -1,0 +1,81 @@
+.condition-container {
+  background: var(--color-pipin);
+  margin-top: 0.9em;
+  border: 1px solid var(--color-carnation);
+  border-radius: 2em 0.8em 0.8em 2em;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.condition-container .condition-icon {
+  background: var(--color-carnation);
+  margin-right: 0.3em;
+  display: inline-block;
+}
+
+.condition-container .delete-icon {
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+
+.condition-container .delete-icon:hover {
+  opacity: 1;
+}
+
+
+.condition-container .input-field {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--color-carnation);
+  color: var(--color-carnation);
+  font-size: 0.8em;
+  padding: 0;
+}
+
+.condition-container .dark-text {
+  color: var(--color-tundora);
+  font-size: 0.9em;
+  font-weight: 600;
+  margin-top: 0.25em;
+}
+
+.condition-container .left {
+  flex: 0.7;
+  align-self: flex-start;
+}
+
+.condition-container .center {
+  flex: 6;
+  display: flex;
+}
+
+.condition-container .right {
+  flex: 0.5;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .input-field {
+   display: block;
+  }
+
+  .condition-container .left {
+    margin-top: 0.05em;
+    margin-left: 0.05em;
+  }
+
+  .condition-container .center {
+    flex-direction: column;
+    padding: 0.8em;
+  }
+
+  .condition-container .right {
+    align-self: flex-start;
+    padding: 0.6em;
+  }
+}
+
+
+

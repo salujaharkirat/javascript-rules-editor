@@ -1,0 +1,129 @@
+.rule-container {
+    border: 2px solid var(--color-cornflowerBlue);
+    margin-top: 2em;
+    padding: 2em;
+    background: var(--color-hawkesBlue);
+    border-radius: 1.5em 1em;
+}
+
+.rule-container .header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rule-container .delete-icon-container {
+  /* position: absolute;
+  right: 10px;
+  top: 10px; */
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.rule-container .delete-icon-container:hover {
+  opacity: 1;
+}
+
+.rule-container .rule-icon-container {
+  /* position: absolute; */
+  /* left: -2px; */
+  /* top: -2px; */
+  display: flex;
+  align-items: center;
+}
+
+.rule-container .description {
+  color: var(--color-tundora);
+  font-size: 0.85em;
+}
+
+.rule-container .highlighted-text {
+  color: var(--color-cornflowerBlue);
+  /* text-decoration: underline; */
+  font-size: 1em;
+  font-weight: 900;
+}
+
+.rule-container .content {
+  margin-top: 3.5em;
+}
+
+.rule-container .doc-icon {
+  background: var(--color-cornflowerBlue);
+  margin-right: 15px;
+}
+
+
+.rule-container .add-icon {
+  background: var(--color-carnation);
+}
+
+.rule-container .add-condition-container {
+  display: inline-block;
+  margin-top: 3em;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.rule-container .add-condition-container:hover {
+  opacity: 1;
+}
+
+
+
+.rule-container .add-condition {
+  background: var(--color-pipin);
+  border: 1px solid var(--color-carnation);
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  border-radius: 2em 0.8em 0.8em 2em;
+}
+
+.rule-container .add-condition-text {
+  padding: 0em 1em 0em 1em;
+}
+
+.rule-container .separator {
+  padding: 3px;
+  padding-left: 15px;
+  display: inline-block;
+  position: relative;
+  margin-top: 10px;
+}
+
+.rule-container .separator::before {
+  content: '';
+  width: 2px;
+  height: 10px;
+  background: var(--color-carnation);
+  position: absolute;
+  bottom: 100%;
+  left: 60%;
+  margin-left: -2px;
+}
+
+.rule-container .separator::after {
+  content: '';
+  width: 2px;
+  height: 10px;
+  background: var(--color-carnation);
+  position: absolute;
+  top: 100%;
+  left: 60%;
+  margin-left: -2px;
+}
+
+.rule-container .separator-text {
+  color: var(--color-carnation);
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  .rule-container {
+    width: -webkit-fill-available;
+    padding: 0.2em;
+  }
+}

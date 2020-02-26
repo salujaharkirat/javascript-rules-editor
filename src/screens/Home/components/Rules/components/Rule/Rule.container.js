@@ -12,8 +12,7 @@ import Rule from "./Rule";
 
 const propTypes = {
   rule: PropTypes.object.isRequired,
-  deleteRule: PropTypes.func.isRequired,
-  updateRule: PropTypes.func.isRequired
+  deleteRule: PropTypes.func.isRequired
 };
 
 
@@ -31,7 +30,13 @@ const RuleContainer = ({
       alert("please delete the conditions first");
       return null;
     }
-    deleteRule(rule.id);
+
+    const r = window.confirm ("Are you sure you want to delete the rule?");
+    if (r) {
+      deleteRule(rule.id);
+      return null;
+    }
+    return null;
   }
 
   return (
