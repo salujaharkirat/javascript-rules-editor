@@ -2,6 +2,9 @@ import React from "react";
 
 import PropTypes from "prop-types";
 
+import conditionIcon from "./images/condition.svg";
+import deleteIcon from "./images/delete.svg";
+
 const propTypes = {
   condition: PropTypes.object.isRequired,
   deleteCondition: PropTypes.func.isRequired,
@@ -14,26 +17,69 @@ const Condition = ({
   updateCondition,
   deleteCondition
 }) => (
-  <div>
-    <input
-      name="fact"
-      onChange={updateCondition}
-      value={condition.fact}
-      style={{margin: '0 10px 10px 0'}}
-    />
+  <div
+    style={{
+      background: "#FFE7E5",
+      marginTop: 10,
+      border: '1px solid #F77566',
+      borderRadius: '2em 0.8em 0.8em 2em',
+      display: 'flex',
+      alignItems: 'center'
+    }}
+  >
+    <div
+      style={{
+        background: '#F77566',
+        padding: 5,
+        borderRadius: '2em'
+      }}
+    >
+      <img
+        src={conditionIcon}
+        className="App-logo"
+        alt="logo"
+      />
+    </div>
+    <div>
+      <span>When</span>
+      <input
+        name="fact"
+        onChange={updateCondition}
+        value={condition.fact}
+        style={{
+          background: 'transparent',
+          border: 'none',
+          textDecoration: 'underline'
+        }}
+      />
+    </div>
+
     <input
       name="operator"
       onChange={updateCondition}
       value={condition.operator}
-      style={{margin: '0 10px 10px 0'}}
+      style={{
+        background: 'transparent',
+        border: 'none',
+        textDecoration: 'underline'
+      }}
     />
     <input
       name="value"
       onChange={updateCondition}
       value={condition.value}
-      style={{margin: '0 10px 10px 0'}}
+      style={{
+        background: 'transparent',
+        border: 'none',
+        textDecoration: 'underline'
+      }}
     />
-    <button onClick={deleteCondition}>Delete Condition</button>
+    <img
+      src={deleteIcon}
+      onClick={deleteCondition}
+      className="App-logo"
+      alt="logo"
+    />
   </div>
 );
 
