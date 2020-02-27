@@ -11,7 +11,7 @@ should be informed so that he can review the order.
 
     yarn install
     yarn test
-    Follow steps mentioned in `https://github.com/jinxac/javascript-rules-backend`
+    Follow steps mentioned in [a link](https://github.com/jinxac/javascript-rules-backend/README.md)
     yarn start
 
 P.S: If the database/Server is not running I am setting the UI with mock data. To perform CRUD with actual please run the above back project.
