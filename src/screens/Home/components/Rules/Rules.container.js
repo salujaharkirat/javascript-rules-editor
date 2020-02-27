@@ -35,6 +35,7 @@ class RulesContainer extends React.Component {
         });
       })
       .catch((error) => {
+        alert('Please check if the API server is Up!!');
         console.log(error);
       })
 

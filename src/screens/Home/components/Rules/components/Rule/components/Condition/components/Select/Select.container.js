@@ -38,7 +38,7 @@ class SelectContainer extends React.Component {
 
   handleClickOutside = e => {
     if (!this.myRef.current.contains(e.target)) {
-      this.toggleDetail();
+      this.setState({showDetail: false});
     }
   };
 
