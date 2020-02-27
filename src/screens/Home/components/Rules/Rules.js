@@ -71,7 +71,6 @@ const Rules = ({
         </div>
       </div>
       {content}
-      <button onClick={onSave}>Save</button>
     </div>
   );
 }

@@ -18,7 +18,7 @@ const propTypes = {
   updateRules: PropTypes.func.isRequired
 }
 
-const RULES_API_ENDPOINT = 'http://localhost:3000/api/v0/rules';
+const RULES_API_ENDPOINT = 'http://localhost:3002/api/v0/rules';
 
 
 class RulesContainer extends React.Component {

@@ -1,6 +1,5 @@
 import React from "react";
 import {connect} from "react-redux";
-import ReactDOM from 'react-dom';
 
 import {updateCondition} from "data/rules/actions";
 
@@ -23,8 +22,26 @@ const OPTIONS = {
 
 class SelectContainer extends React.Component {
   state = {
-    showDetail: false
+    showDetail: false,
   }
+
+  myRef = React.createRef();
+
+
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleClickOutside);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside);
+  }
+
+  handleClickOutside = e => {
+    if (!this.myRef.current.contains(e.target)) {
+      this.toggleDetail();
+    }
+  };
+
 
   updateOption = (option) => {
     this.props.updateCondition(
@@ -44,7 +61,7 @@ class SelectContainer extends React.Component {
     const {selectedOption} = this.props;
     return (
       <Select
-        ref={this.myRef}
+        myRef={this.myRef}
         options={OPTIONS}
         updateOption={this.updateOption}
         selectedOption={selectedOption}
