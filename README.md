@@ -9,8 +9,8 @@ should be informed so that he can review the order.
 
 ## Steps
 
-yarn install
-yarn start
-yarn test
+    yarn install
+    yarn start
+    yarn test
 
 
