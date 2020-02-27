@@ -10,7 +10,11 @@ should be informed so that he can review the order.
 ## Steps
 
     yarn install
-    yarn start
     yarn test
+    Follow steps mentioned in `https://github.com/jinxac/javascript-rules-backend`
+    yarn start
+
+P.S: If the database/Server is not running I am setting the UI with mock data. To perform CRUD with actual please run the above back project.
+
 
 

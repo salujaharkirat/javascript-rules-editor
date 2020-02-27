@@ -5,8 +5,15 @@ import Text from "components/Text";
 
 require("./Select.css");
 
+const SelectWithRef = React.forwardRef((props, ref) => {
+  return (
+    <Select ref={ref} {...props} />
+  );
+});
+
 const Select = ({
   ref,
+  myRef,
   options,
   selectedOption,
   updateOption,
@@ -24,7 +31,7 @@ const Select = ({
     </li>
   );
   return (
-    <div className='select-container'>
+    <div className='select-container' ref={myRef}>
       <div
         className='selected-option'
         onClick={toggleDetail}
@@ -48,4 +55,4 @@ const Select = ({
   )
 }
 
-export default Select;
+export default SelectWithRef;

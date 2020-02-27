@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 
 import axios from "axios";
 
+import DATA from "./__mocks__";
+
 import {
   updateRules,
   addRule
@@ -18,7 +20,7 @@ const propTypes = {
   updateRules: PropTypes.func.isRequired
 }
 
-const RULES_API_ENDPOINT = 'http://localhost:3000/api/v0/rules';
+const RULES_API_ENDPOINT = 'http://localhost:3002/api/v0/rules';
 
 
 class RulesContainer extends React.Component {
@@ -30,12 +32,17 @@ class RulesContainer extends React.Component {
     axios.get(RULES_API_ENDPOINT)
       .then(({data}) => {
         this.props.updateRules(data.data);
+
+      })
+      .catch((error) => {
+        this.props.updateRules(DATA);
+        alert('Please check if the API server is Up!!');
+        console.log(error);
+      })
+      .finally(() => {
         this.setState({
           loading: false
         });
-      })
-      .catch((error) => {
-        console.log(error);
       })
 
   }
